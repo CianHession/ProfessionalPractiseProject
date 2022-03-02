@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Add } from './components/add';
+import { Events } from './components/events';
+import { Home } from './components/home';
+import {Navbar, Nav} from 'react-bootstrap';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+
+
+
+class App extends Component {
+  render(){
+    return (
+      <Router>
+      <div className='="App'>
+
+        <Navbar bg="primary" variant="dark">
+            <Navbar.Brand href="#home">Ticket App</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/events">Event Calendar</Nav.Link>
+              <Nav.Link href="/add">Create Event</Nav.Link>
+            </Nav>
+          </Navbar>
+
+          <br/>
+          <Switch>
+            <Route path='/' component={Home} exact></Route>
+            <Route path='/events' component={Events} exact></Route>
+            <Route path='/add' component={Add} exact></Route>
+          </Switch>
+      </div>
+      </Router>
+    );
+  }
 }
-
 export default App;
