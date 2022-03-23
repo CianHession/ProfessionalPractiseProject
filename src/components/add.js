@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Add extends Component {
+export class Add extends Component {
     constructor() {
         super();
         //Bind to Functions to Add Movie(s)
