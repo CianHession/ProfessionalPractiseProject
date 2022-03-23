@@ -7,7 +7,7 @@ import { Home } from './components/home';
 import {Navbar, Nav} from 'react-bootstrap';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import {Add} from './components/add';
+//import {Add} from './components/add';
 
 
 
