@@ -21,7 +21,7 @@ class App extends Component {
             <Navbar.Brand href="#home">Ticket App</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/events">Event Calendar</Nav.Link>
+              <Nav.Link href="/events">Events</Nav.Link>
               <Nav.Link href="/add">Create Event</Nav.Link>
             </Nav>
           </Navbar>
