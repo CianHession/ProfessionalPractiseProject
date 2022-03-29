@@ -6,9 +6,9 @@ export class Add extends Component {
         super();
         //Bind to Functions to Add Movie(s)
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onChangeEventName = this.onChangeMovieName.bind(this);
-        this.onChangeTicketPrice = this.onChangeMovieYear.bind(this);
-        this.onChangeEventPoster = this.onChangeMoviePoster.bind(this);
+        this.onChangeEventName = this.onChangeEventName.bind(this);
+        this.onChangeTicketPrice = this.onChangeTicketPrice.bind(this);
+        this.onChangeEventPoster = this.onChangeEventPoster.bind(this);
 
         //Set-up Blank State
         this.state = {
