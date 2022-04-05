@@ -1,84 +1,75 @@
-import React, {Component} from "react";
-import AuthHelperMethods from './components/AuthHelperMethods';
-import './login.css'
+import React, { useState } from 'react'
 import axios from "axios";
-import { Link } from 'react-router-dom';
-
-export default class Signup extends Component {
-    
-    Auth = new AuthHelperMethods();
-    state = {
-        username: "",
-        password: ""
-    }
-
-    _handleChange = (e) => {
-        
-        this.setState(
-            {
-                [e.target.name]: e.target.value
-            }
-        )
-
-        console.log(this.state);
-    }
-
-    handleFormSubmit = (e) => {
-
+import { useHistory } from "react-router-dom";
+ 
+const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confPassword, setConfPassword] = useState('');
+    const [msg, setMsg] = useState('');
+    const history = useHistory();
+ 
+    const Register = async (e) => {
         e.preventDefault();
-        
-        axios.post("/signup", {
-                username: this.state.username,
-                password: this.state.password
-            }).then((data) => {
-                console.log(data);
-                this.props.history.replace('/login');
-            })
-    }
-
-    componentDidMount() {
-        console.log(this.Auth.loggedIn());
-        if(this.Auth.loggedIn()){
-            this.props.history.push('/dashboard')
+        try {
+            await axios.post('http://localhost:5000/users', {
+                name: name,
+                email: email,
+                password: password,
+                confPassword: confPassword
+            });
+            history.push("/");
+        } catch (error) {
+            if (error.response) {
+                setMsg(error.response.data.msg);
+            }
         }
     }
-
-    render() {
-
-
-        return (
-            <React.Fragment>
-                <div className="main-wrapper">
-                    <div className="box">
-                        <div className="box-header">
-                            <h1>Signup</h1>
+ 
+    return (
+        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
+            <div className="hero-body">
+                <div className="container">
+                    <div className="columns is-centered">
+                        <div className="column is-4-desktop">
+                            <form onSubmit={Register} className="box">
+                                <p className="has-text-centered">{msg}</p>
+                                <div className="field mt-5">
+                                    <label className="label">Name</label>
+                                    <div className="controls">
+                                        <input type="text" className="input" placeholder="Name"
+                                            value={name} onChange={(e) => setName(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="field mt-5">
+                                    <label className="label">Email</label>
+                                    <div className="controls">
+                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="field mt-5">
+                                    <label className="label">Password</label>
+                                    <div className="controls">
+                                        <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="field mt-5">
+                                    <label className="label">Confirm Password</label>
+                                    <div className="controls">
+                                        <input type="password" className="input" placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
+                                    </div>
+                                </div>
+                                <div className="field mt-5">
+                                    <button className="button is-success is-fullwidth">Register</button>
+                                </div>
+                            </form>
                         </div>
-                        <form className="box-form">
-                            <input
-                                className="form-item"
-                                placeholder="Username"
-                                name="username"
-                                type="text"
-                                onChange={this._handleChange}
-                            />
-                            <input
-                                className="form-item"
-                                placeholder="Password"
-                                name="password"
-                                type="password"
-                                onChange={this._handleChange}
-                            />
-                            <button className="form-submit" onClick={this.handleFormSubmit}>Signup</button>
-                        </form>
-                        <Link className="link" to="/login">Already have an account? <span className="link-signup">Login</span></Link>
                     </div>
-                    {/* <div className="signiture">
-                        <h1>Template Built & Designed by Roman Chvalbo</h1>
-                    </div> */}
                 </div>
-                
-            </React.Fragment>
-        );
-    }
-
+            </div>
+        </section>
+    )
 }
+ 
+export default Register
