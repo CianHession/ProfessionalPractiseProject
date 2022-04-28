@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { API_ROOT } from '../settings';
 
-const Register = () => {
+const RegisterOrg = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,14 +11,15 @@ const Register = () => {
     const [msg, setMsg] = useState('');
     const history = useHistory();
  
-    const Register = async (e) => {
+    const RegisterOrg = async (e) => {
         e.preventDefault();
         try {
             await axios.post(API_ROOT+'users', {
                 name: name,
                 email: email,
                 password: password,
-                confPassword: confPassword
+                confPassword: confPassword,
+                isAdmin: true
             });
             history.push("/");
         } catch (error) {
@@ -34,13 +35,15 @@ const Register = () => {
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
-                            <form onSubmit={Register} className="box">
-                                <img src="/logo.png" width="333" height="93" alt="logo" />
-                                <p className="has-text-centered"><small>From here you can register to be a user
-                                so that you can find events and buy tickets at those events.</small></p>
-                                <p className="has-text-centered small"><small>Please fill out the fields below and click the Register button to complete the process.</small></p>
+                            <form onSubmit={RegisterOrg} className="box">
+                            <img src="/logo.png" width="333" height="93" alt="logo" />
+                            <p className="has-text-centered"><small>From here you can register as an
+                            Event Organiser so that you can set up your own events and sell tickets for those events.</small></p>
+                            <p className="has-text-centered small"><small>Please fill out the fields below and 
+                            click the Register button to complete the process.</small></p>
+
                                 <div className="field mt-5">
-                                    <label className="label">Name</label>
+                                    <label className="label">Organisation Name</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Name"
                                             value={name} onChange={(e) => setName(e.target.value)} />
@@ -78,4 +81,4 @@ const Register = () => {
     )
 }
  
-export default Register
+export default RegisterOrg;

@@ -2,8 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { API_ROOT } from '../settings';
-
-const Navbar = () => {
+ 
+const AdminNavbar = () => {
     const history = useHistory();
  
     const Logout = async () => {
@@ -32,22 +32,12 @@ const Navbar = () => {
  
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="nav-item mt-2">
-                        <a href="/dashboard" className="navbar-item">
-                            Home
+                        <a href="/admin/dashboard" className="navbar-item">
+                            Our Events
                         </a>
                     </div>
 
-                    <div className="nav-item mt-2">
-                        <a href="/tickets" className="navbar-item">
-                            My Tickets
-                        </a>
-                    </div>
-                    <div className="nav-item mt-2">
-                        <a href="/payments" className="navbar-item">
-                            My Payments
-                        </a>
-                    </div>
-
+                    
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
@@ -63,4 +53,4 @@ const Navbar = () => {
     )
 }
  
-export default Navbar
+export default AdminNavbar

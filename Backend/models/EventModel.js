@@ -1,18 +1,10 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import { db } from "../config/settings.js";
+import EventOrganisation from "./EventOrganisationModel.js";
  
 const { DataTypes } = Sequelize;
  
 const Events = db.define('events',{
-
-// ID 
-// Name 
-// EventDate 
-// OpenSalesDate
-// ClosingSalesDate 
-// MaxTicketsAllowed 
-// EventOrganisationID 
-// TicketPrice
 
     name:{
         type: DataTypes.STRING
@@ -36,8 +28,6 @@ const Events = db.define('events',{
     freezeTableName:true
 });
  
-Events.hasOne(EventOrganisation);
-
 (async () => {
     await db.sync();
 })();

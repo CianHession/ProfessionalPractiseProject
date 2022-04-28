@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
- 
+import { db } from "../config/settings.js";
+
 const { DataTypes } = Sequelize;
  
 // ID 
@@ -9,7 +9,7 @@ const { DataTypes } = Sequelize;
 // AdministratorPassword 
 
 
-const EventOrganisation = db.define('tickets_sold',{
+const EventOrganisation = db.define('event_organisation',{
     name:{
         type: DataTypes.STRING
     },
@@ -18,10 +18,16 @@ const EventOrganisation = db.define('tickets_sold',{
     },
     administrator_password:{
         type: DataTypes.STRING
+    },
+    refresh_token:{
+        type: DataTypes.TEXT
     }
+
 },{
     freezeTableName:true
 });
+
+
  
 (async () => {
     await db.sync();

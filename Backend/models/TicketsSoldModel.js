@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import { db } from "../config/settings.js";
  
 const { DataTypes } = Sequelize;
  
@@ -16,8 +16,7 @@ const TicketsSold = db.define('tickets_sold',{
     freezeTableName:true
 });
 
-TicketsSold.belongsTo(Events);
-TicketsSold.hasMany(Payment);
+
  
 (async () => {
     await db.sync();

@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import { db } from "../config/settings.js";
  
 const { DataTypes } = Sequelize;
  
@@ -19,6 +19,8 @@ const Users = db.define('users',{
 },{
     freezeTableName:true
 });
+
+
  
 (async () => {
     await db.sync();

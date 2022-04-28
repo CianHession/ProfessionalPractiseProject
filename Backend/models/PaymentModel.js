@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import { db } from "../config/settings.js";
  
 const { DataTypes } = Sequelize;
 
@@ -10,7 +10,7 @@ const { DataTypes } = Sequelize;
 // PaymentDate 
 
 
-const Payments = db.define('tickets_sold',{
+const Payments = db.define('payments',{
     total_price:{
         type: DataTypes.FLOAT
     },
@@ -22,10 +22,12 @@ const Payments = db.define('tickets_sold',{
     },
     payment_date:{
         type: DataTypes.DATE
-    },
+    }
 },{
     freezeTableName:true
 });
+
+
 
 
  
