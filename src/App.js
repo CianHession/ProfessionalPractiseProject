@@ -7,6 +7,7 @@ import Navbar from "./components/navbar";
 import AdminNavbar from "./components/adminnavbar";
 import Register from "./components/register";
 import RegisterOrg from "./components/registerorg";
+import BuyTicket from "./components/buy";
  
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
         <Route path="/admin/createevent">
           <AdminNavbar/>
           <CreateEvent/>
+        </Route>
+        <Route path="/buy">
+          <AdminNavbar/>
+          <BuyTicket/>
         </Route>
       </Switch>
     </BrowserRouter>

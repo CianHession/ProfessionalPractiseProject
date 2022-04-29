@@ -64,6 +64,7 @@ const Dashboard = () => {
    
     const buy = async () => {
         console.log("Buy clicked");
+        history.push("/buy");
     }
    
     return (
@@ -94,7 +95,7 @@ const Dashboard = () => {
                     <td>{formatDate(event.closing_date)}</td>
                     <td>{event.max_tickets}</td>
                     <td>{event.ticket_price}</td>
-                    <td><Button className="align-middle" onClick={buy}><FaTicketAlt className="mr-1" ></FaTicketAlt> Buy</Button></td>
+                    <td><Button className="align-middle" onClick={buy}><FaTicketAlt className="mr-1" ></FaTicketAlt>Buy</Button></td>
                 </tr>
             ))}
                 </tbody>

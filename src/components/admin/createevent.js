@@ -49,7 +49,7 @@ const CreateEvent = () => {
             if(admin) {
                 history.push("/admin/dashboard");
             } else {
-                history.push("/dashboard");
+                history.push("/admin/dashboard");
             }
         } catch (error) {
             if (error.response) {
